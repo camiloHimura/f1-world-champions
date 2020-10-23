@@ -1,23 +1,15 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 60px;
-  height: 40px;
+export const Wrapper = styled.div`
+  min-height: 100vh;
+  padding: var(--gPadding);
+  background: var(--black);
+  width: var(--options-width);
+  border-right: 1px solid black;
+`;
+
+export const Link = styled.div`
   cursor: pointer;
-  margin-left: 10px;
-  border-radius: 2px;
-  transition: all .2s;
-  border: 1px solid black;
-  
-  &.selected{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-`
-
-
-export const Title = styled.h2`  
-  margin-left: 20px;
-`
-
+  margin-bottom: 10px;
+  color: var(--white);
+`;

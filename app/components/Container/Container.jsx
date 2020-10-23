@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Wraper } from "./styles";
 import Seasons from "../Seasons";
 import Drivers from "../Drivers";
+import { FIRST_SEASON } from "../../contans";
 
-function Container(props) {
+function Container() {
   const [year, setYear] = useState("");
+  const limit = new Date().getFullYear() + 1 - FIRST_SEASON;
 
   return (
     <Wraper>
-      <div>Container</div>;
-      <Seasons setYear={setYear} />
+      <Seasons setYear={setYear} limit={limit} />
       <Drivers year={year} />
     </Wraper>
   );
 }
-
-Container.propTypes = {};
 
 export default Container;

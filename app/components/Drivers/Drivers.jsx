@@ -1,33 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useFetchGet } from "../../hooks";
+import { Wrapper } from "./styles";
+import Loader from "../Loader";
+import Card from "../Card";
 
 function Drivers(props) {
   const { year } = props;
 
-  const { loadingData, data } = useFetchGet(
-    `${year}/drivers.json`,
-    "MRData.DriverTable.Drivers",
-    [year]
-  );
+  const { loading, data } = useFetchGet({
+    url: `${year}/drivers.json`,
+    path: "MRData.DriverTable.Drivers",
+    dependencies: [year],
+  });
 
   return (
-    <div>
-      {loadingData && <p>Loading... </p>}
-      {!loadingData &&
+    <Wrapper>
+      {loading && <Loader />}
+      {!loading &&
         data &&
         data.map((info, index) => (
-          <div key={index}>
-            code: {info.code}
-            dateOfBirth: {info.dateOfBirth}
-            driverId: {info.driverId}
-            familyName: {info.familyName}
-            givenName: {info.givenName}
-            nationality: {info.nationality}
-            url: {info.url}
-          </div>
+          <Card key={`${index}-${info.driverId}`} {...info} />
         ))}
-    </div>
+    </Wrapper>
   );
 }
 
