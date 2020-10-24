@@ -137,7 +137,7 @@ table {
   --blue: #122a59;
   --blue-2: #1f64bf;
   --blue-3: #30a8f2;
-  --blue-4: #29cdf2;
+  --blue-4: #5a98bf;
 
   --white: #fff;
 
@@ -161,69 +161,15 @@ body,
 html,
 .MyChat {
   height: 100%;
+  font-family: sans-serif;
 }
 
 .f1WorldCampios {
   display: flex;
-  font-size: 18px;
+  font-size: 14px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
-
-h1,
-h2 {
-  font-size: 18px;
-}
-
-input {
-  outline: none;
-}
-
-.--flex {
-  display: flex;
-}
-
-.--wrap {
-  flex-wrap: wrap;
-}
-
-.--flexBetween {
-  justify-content: space-between;
-}
-
-.--flexCenter {
-  justify-content: center;
-}
-
-.--flexEnd {
-  justify-content: flex-end;
-}
-
-.--flexColumn {
-  flex-direction: column;
-}
-
-.--spaceEvenly {
-  justify-content: space-evenly;
-}
-
-.--marginBottom {
-  margin-bottom: var(--paragraph-margin);
-}
-
-.--marginRight {
-  margin-right: var(--paragraph-margin);
-}
-
-button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.--pointer {
-  cursor: pointer;
 }
 
 div {
@@ -231,6 +177,9 @@ div {
 }
 
 @media screen and (min-width: 600px) {
+  :root {
+    --width-cards: calc(100% / 2 - (var(--gPadding) * 2));
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -246,13 +195,12 @@ div {
 
 @media screen and (min-width: 1280px) {
   :root {
-    --width-cards: calc(100% / 4 - (var(--gPadding) * 2));
   }
 }
 
 @media screen and (min-width: 1920px) {
   :root {
-    --width-cards: calc(100% / 5 - (var(--gPadding) * 2));
+    --width-cards: calc(100% / 4 - (var(--gPadding) * 2));
   }
 }
 

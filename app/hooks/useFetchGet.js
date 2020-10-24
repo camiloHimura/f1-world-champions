@@ -3,7 +3,11 @@ import instance from "../utils/axios.conf";
 import get from "lodash.get";
 
 export default ({ url, path, dependencies = [], map = (data) => data }) => {
-  const [state, setState] = useState({ data: null, loading: false });
+  const [state, setState] = useState({
+    data: null,
+    loading: false,
+    error: null,
+  });
 
   useEffect(() => {
     const validDependency =
@@ -19,8 +23,11 @@ export default ({ url, path, dependencies = [], map = (data) => data }) => {
       .get(url)
       .then((response) => get(response.data, path, []))
       .then((data) => map(data))
-      .then((data) => setState({ data, loading: false }));
+      .then((data) => setState({ data, loading: false }))
+      .catch(() => {
+        setState({ data: null, error: true, loading: false });
+      });
   }, dependencies);
-  console.log(state);
+
   return state;
 };

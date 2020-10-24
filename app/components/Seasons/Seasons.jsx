@@ -1,49 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useFetchGet } from "../../hooks";
-import { Wrapper, Link } from "./styles";
-import Loader from "../Loader";
-import Grouper from "../Grouper";
+import { Wrapper, Title, Option } from "./styles";
 
 function Sesons(props) {
-  const { setYear, limit } = props;
+  const { setYear } = props;
+  const [aciveId, setAciveId] = React.useState(null);
 
-  const { loading, data } = useFetchGet({
-    url: `seasons.json?limit=${limit}`,
-    path: "MRData.SeasonTable.Seasons",
-    /* map: (data) => data.reverse(), */
-  });
-
+  const seasons = Array.from({ length: 11 }).map(
+    (_, index) => `${2005 + index}`
+  );
   return (
     <Wrapper>
-      {loading && <Loader />}
-      {
-        !loading && data && (
-          <Grouper data={data} onSelected={setYear} numElements={10} />
-        )
-        /* data.map((info, index) => (
-          <Link
-            key={info.season}
-            onClick={() => {
-              setYear(info.season);
-              setActive(index);
-            }}
-          >
+      <Title data-test="title">Seasons</Title>
+      {seasons.map((info, index) => {
+        const id = `info-${index}`;
+        return (
+          <Option key={id} data-test="option">
             <span
-              className={active == index && "--active"}
-              style={{ marginLeft: `${(index % 10 | 0) * 4}%` }}
+              className={aciveId == id ? "--active" : ""}
+              onClick={() => {
+                setYear(info);
+                setAciveId(id);
+              }}
             >
-              {info.season}
+              {info}
             </span>
-          </Link>
-        )) */
-      }
+          </Option>
+        );
+      })}
     </Wrapper>
   );
 }
 
 Sesons.propTypes = {
-  limit: PropTypes.number.isRequired,
   setYear: PropTypes.func.isRequired,
 };
 
