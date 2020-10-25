@@ -3,9 +3,13 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   color: var(--black);
-  margin: var(--gPadding);
-  width: var(--width-cards);
   border: 1px solid var(--gray-4);
+  border-bottom: none;
+
+  &.header {
+    font-weight: bold;
+    text-align: center;
+  }
 `;
 
 export const Header = styled.div`
@@ -13,28 +17,22 @@ export const Header = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   padding: var(--gPadding);
-  background: var(--gray-4);
+  border-right: 1px solid var(--gray-4);
 
-  h2 {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    word-break: break-all;
-    text-transform: capitalize;
+  &.multipleWins {
+    background: var(--green);
   }
 
-  p {
-    font-size: 13px;
+  span {
+    text-transform: capitalize;
   }
 `;
 
 export const Details = styled.div`
   width: 60%;
   display: flex;
-  font-size: 14px;
   flex-direction: column;
   padding: var(--gPadding);
   justify-content: space-between;

@@ -1,18 +1,29 @@
+## F1 Worls Champions
 
-## Available Scripts
+React app server and built with express and Hooks
 
-In the project directory, you can run:
+### `npm install`
 
-### `npm start`
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+node version 12 or greater.
 
+### `npm run start:dev`
 
-### `npm test`
-run test
+Run develop mode.
 
-### `npm test:watch`
-run test in 'watch' mode
+Uses webpack-dev-server to build and serve the app (hot reload it's available), it opens automatically on the browser.
 
 ### `npm run build`
-Builds the app for production to the `public` folder.<br>
 
+build the app with develop config.
+
+### `npm run build:prod`
+
+build the app with production config.
+
+### `npm run test`
+
+Runs all the tests in the App, Jest + Enzyme.
+
+### `npm run test:watch`
+
+Runs all the tests in the App in 'watch' mode.

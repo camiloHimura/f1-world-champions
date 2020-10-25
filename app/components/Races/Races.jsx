@@ -5,6 +5,7 @@ import { Wrapper } from "./styles";
 import Loader from "../Loader";
 import TableRaces from "../TableRaces";
 import Info from "../Info";
+import MultipleWinners from "../../utils/MultipleWinners";
 
 function Races(props) {
   const { year } = props;
@@ -13,20 +14,7 @@ function Races(props) {
     url: `${year}/results/1.json`,
     path: "MRData.RaceTable.Races",
     dependencies: [year],
-    map: (info) => {
-      console.log(info);
-      return info.map((circuit) => ({
-        name: circuit.raceName,
-        date: circuit.date,
-        url: circuit.url,
-        country: circuit.Circuit.Location.country,
-        winner: {
-          familyName: circuit.Results[0].Driver.familyName,
-          givenName: circuit.Results[0].Driver.givenName,
-          nationality: circuit.Results[0].Driver.nationality,
-        },
-      }));
-    },
+    map: (info) => MultipleWinners(info),
   });
 
   return (

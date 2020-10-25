@@ -13,7 +13,6 @@ export const Title = styled.div`
   background: var(--white);
   text-align: center;
   padding: var(--gPadding);
-  margin: var(--gPadding);
   margin-bottom: calc(var(--gPadding) * 2);
 `;
 

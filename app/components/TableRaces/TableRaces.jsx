@@ -6,24 +6,36 @@ import Info from "../Info";
 function TableRaces(props) {
   const { data } = props;
 
-  return data.map(({ name, url, country, winner }, index) => (
-    <Wrapper key={`circuit-${index}`}>
-      <Header>
-        <h2>{name}</h2>
-        <p>{country}</p>
-      </Header>
-      <Details>
-        <Info
-          icon="account_circle"
-          text={`${winner.givenName} ${winner.familyName}`}
-        ></Info>
-        <Info icon="flag" text={winner.nationality}></Info>
-        <Link href={url} target="blank">
-          More...
-        </Link>
-      </Details>
-    </Wrapper>
-  ));
+  return (
+    <>
+      <Wrapper className="header">
+        <Header>Race Name</Header>
+        <Details>Winer</Details>
+      </Wrapper>
+
+      {data.map(({ name, url, country, winner }, index) => (
+        <Wrapper key={`circuit-${index}`} data-test="race">
+          <Header
+            data-test="header"
+            style={{ backgroundColor: winner.multipleWins ? winner.color : "" }}
+          >
+            <h2>
+              <span>{name}</span> / {country}
+            </h2>
+          </Header>
+          <Details>
+            <Info
+              icon="account_circle"
+              text={`${winner.givenName} ${winner.familyName} / ${winner.nationality}`}
+            ></Info>
+            <Link data-test="link" href={url} target="blank">
+              More...
+            </Link>
+          </Details>
+        </Wrapper>
+      ))}
+    </>
+  );
 }
 
 TableRaces.propTypes = {
@@ -34,9 +46,12 @@ TableRaces.propTypes = {
       date: PropTypes.string.isRequired,
       country: PropTypes.string.isRequired,
       winner: PropTypes.shape({
-        familyName: PropTypes.string.isRequired,
+        color: PropTypes.string,
+        driverId: PropTypes.string.isRequired,
         givenName: PropTypes.string.isRequired,
+        familyName: PropTypes.string.isRequired,
         nationality: PropTypes.string.isRequired,
+        multipleWins: PropTypes.bool.isRequired,
       }),
     })
   ).isRequired,

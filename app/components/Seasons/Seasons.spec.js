@@ -24,7 +24,7 @@ describe("Seasons component", () => {
     expect(findByTestAttr(Component, "option")).toHaveLength(11);
   });
 
-  it("options was clicled, setYear ans setAciveId are called", () => {
+  it("option was clicked, setYear and setAciveId were called", () => {
     const index = 0;
 
     findByTestAttr(Component, "option")

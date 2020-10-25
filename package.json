@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run server",
     "start:dev": "webpack-dev-server --open --env.mode development",
-    "build": "webpack --progress",
+    "build": "webpack --env.mode development --progress",
+    "build:prod": "webpack -p --progress --env.mode production",
     "test": "jest --config ./jest.config.json",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watchAll"
   },
   "keywords": [
     "react",
@@ -39,13 +39,10 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-polyfill": "^6.26.0",
     "check-prop-types": "^1.1.2",
-    "cors": "^2.8.5",
     "css-loader": "^4.2.1",
-    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "enzyme-to-json": "^3.5.0",
-    "express": "^4.17.1",
     "html-webpack-plugin": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.0",
